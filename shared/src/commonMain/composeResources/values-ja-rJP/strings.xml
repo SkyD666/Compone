@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="clear_input_text">消去</string>
+    <string name="password_visibility_off">非表示</string>
+    <string name="password_visibility_on">表示</string>
+    <string name="paste">貼り付け</string>
+    <string name="close">閉じる</string>
+    <string name="back">戻る</string>
+    <string name="warning">警告</string>
+    <string name="cancel">キャンセル</string>
+    <string name="ok">OK</string>
+    <string name="delete">消去</string>
+    <string name="waiting">待機中…</string>
+    <string name="reset">リセット</string>
+</resources>

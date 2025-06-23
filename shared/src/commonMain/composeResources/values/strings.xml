@@ -1,0 +1,14 @@
+<resources>
+    <string name="clear_input_text">Clear</string>
+    <string name="password_visibility_off">Hide</string>
+    <string name="password_visibility_on">Show</string>
+    <string name="paste">Paste</string>
+    <string name="close">Close</string>
+    <string name="back">Back</string>
+    <string name="warning">Warning</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="delete">Delete</string>
+    <string name="waiting">Waiting…</string>
+    <string name="reset">Reset</string>
+</resources>

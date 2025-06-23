@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="paste">Alglui</string>
+    <string name="warning">Averto</string>
+    <string name="cancel">Nuligi</string>
+    <string name="ok">Bone</string>
+    <string name="close">Fermi</string>
+    <string name="back">Reen</string>
+</resources>

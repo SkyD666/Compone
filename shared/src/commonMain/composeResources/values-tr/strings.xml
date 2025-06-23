@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="clear_input_text">Temizle</string>
+    <string name="password_visibility_off">Gizle</string>
+    <string name="password_visibility_on">Göster</string>
+    <string name="paste">Yapıştır</string>
+    <string name="close">Kapat</string>
+    <string name="back">Geri</string>
+    <string name="warning">Uyarı</string>
+    <string name="cancel">İptal</string>
+    <string name="ok">Tamam</string>
+    <string name="delete">Sil</string>
+    <string name="waiting">Bekleniyor…</string>
+    <string name="reset">Sıfırla</string>
+</resources>
