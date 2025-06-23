@@ -84,7 +84,7 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta04")
+    coordinates("io.github.skyd666", "compone", "1.0-beta05")
 
     pom {
         name.set("Compone")
