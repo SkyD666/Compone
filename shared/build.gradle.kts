@@ -76,11 +76,15 @@ android {
     }
 }
 
+compose.resources {
+    publicResClass = true
+}
+
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta02")
+    coordinates("io.github.skyd666", "compone", "1.0-beta03")
 
     pom {
         name.set("Compone")
