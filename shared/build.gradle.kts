@@ -80,11 +80,11 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta01")
+    coordinates("io.github.skyd666", "compone", "1.0-beta02")
 
     pom {
         name.set("Compone")
-        description.set("A Compose Multiplatform UI Component.")
+        description.set("A Compose Multiplatform UI Kit.")
         inceptionYear.set("2025")
         url.set("https://github.com/SkyD666/Compone")
         licenses {

@@ -107,7 +107,7 @@ fun ComponeFloatingActionButton(
 }
 
 @Composable
-fun PodAuraExtendedFloatingActionButton(
+fun ComponeExtendedFloatingActionButton(
     modifier: Modifier = Modifier,
     text: @Composable () -> Unit,
     icon: @Composable () -> Unit,
@@ -172,7 +172,7 @@ fun BottomHideExtendedFloatingActionButton(
         enter = slideInVertically { with(density) { 40.dp.roundToPx() } } + fadeIn(),
         exit = slideOutVertically { with(density) { 40.dp.roundToPx() } } + fadeOut(),
     ) {
-        PodAuraExtendedFloatingActionButton(
+        ComponeExtendedFloatingActionButton(
             modifier = modifier,
             text = text,
             icon = icon,
