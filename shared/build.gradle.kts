@@ -20,7 +20,7 @@ kotlin {
         }
     }
 
-    jvm("desktop")
+    jvm()
 
 //    listOf(
 //        iosX64(),
@@ -48,8 +48,7 @@ kotlin {
             implementation(libs.kotlin.test)
         }
 
-        val desktopMain by getting
-        desktopMain.dependencies {
+        jvmMain.dependencies {
             implementation(compose.desktop.common)
         }
 
@@ -84,7 +83,7 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta05")
+    coordinates("io.github.skyd666", "compone", "1.0-beta06")
 
     pom {
         name.set("Compone")
