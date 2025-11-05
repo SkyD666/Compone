@@ -1,9 +1,8 @@
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.vanniktech.mavenPublish)
@@ -11,12 +10,8 @@ plugins {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            compileTaskProvider.configure {
-                compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_17)
-                }
-            }
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
         }
     }
 
@@ -35,21 +30,22 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.ui)
-            implementation(compose.material3)
-            implementation(compose.foundation)
-            implementation(compose.materialIconsExtended)
-            implementation(compose.components.resources)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.material3.adaptive.navigation)
+            implementation(libs.compose.materialIconsExtended)
+            implementation(libs.compose.components.resources)
             implementation(libs.jetbrains.navigation.compose)
-            implementation(libs.jetbrains.compose.adaptive.navigation)
         }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
 
         jvmMain.dependencies {
-            implementation(compose.desktop.common)
+            implementation(libs.compose.desktop)
         }
 
         all {
@@ -65,7 +61,7 @@ kotlin {
 
 android {
     namespace = "com.skyd.compone"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         minSdk = 24
     }
@@ -80,10 +76,10 @@ compose.resources {
 }
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+    publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta06")
+    coordinates("io.github.skyd666", "compone", "1.0-beta07")
 
     pom {
         name.set("Compone")

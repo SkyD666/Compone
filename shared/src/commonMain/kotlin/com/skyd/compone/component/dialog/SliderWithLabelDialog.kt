@@ -42,16 +42,16 @@ fun SliderWithLabelDialog(
         onValueChange = { value = it },
         valueRange = valueRange,
         valueLabel = {
-            Box(modifier = Modifier.Companion.fillMaxWidth()) {
+            Box(modifier = Modifier.fillMaxWidth()) {
                 Text(
-                    modifier = Modifier.Companion
-                        .align(Alignment.Companion.Center)
+                    modifier = Modifier
+                        .align(Alignment.Center)
                         .animateContentSize(),
                     text = label(value),
                     style = MaterialTheme.typography.titleMedium,
                 )
                 ComponeIconButton(
-                    modifier = Modifier.Companion.align(Alignment.Companion.CenterEnd),
+                    modifier = Modifier.align(Alignment.CenterEnd),
                     onClick = { value = defaultValue() },
                     imageVector = Icons.Outlined.Restore,
                     contentDescription = stringResource(Res.string.reset),

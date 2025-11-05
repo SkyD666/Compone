@@ -21,7 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import compone.shared.generated.resources.*
+import compone.shared.generated.resources.Res
+import compone.shared.generated.resources.waiting
+import compone.shared.generated.resources.warning
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

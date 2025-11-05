@@ -16,6 +16,7 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.rememberTooltipState
@@ -43,8 +44,8 @@ fun ComponeFloatingActionButton(
     content: @Composable RowScope.() -> Unit
 ) {
     val density = LocalDensity.current
-    val floatingActionButton: @Composable (modifier: Modifier) -> Unit = {
-        val newModifier = it.onSizeChanged {
+    val floatingActionButton: @Composable (modifier: Modifier) -> Unit = { modifier ->
+        val newModifier = modifier.onSizeChanged {
             with(density) {
                 onSizeWithSinglePaddingChanged?.invoke(
                     it.width.toDp() + 16.dp,
@@ -93,7 +94,7 @@ fun ComponeFloatingActionButton(
     } else {
         TooltipBox(
             modifier = modifier,
-            positionProvider = TooltipDefaults.rememberTooltipPositionProvider(),
+            positionProvider = TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
             tooltip = {
                 PlainTooltip {
                     Text(contentDescription)
@@ -119,11 +120,11 @@ fun ComponeExtendedFloatingActionButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {
     val density = LocalDensity.current
-    val floatingActionButton: @Composable (modifier: Modifier) -> Unit = {
+    val floatingActionButton: @Composable (modifier: Modifier) -> Unit = { modifier ->
         ExtendedFloatingActionButton(
             text = text,
             icon = icon,
-            modifier = it.onSizeChanged {
+            modifier = modifier.onSizeChanged {
                 with(density) {
                     onSizeWithSinglePaddingChanged?.invoke(
                         it.width.toDp() + 16.dp,
@@ -143,7 +144,7 @@ fun ComponeExtendedFloatingActionButton(
     } else {
         TooltipBox(
             modifier = modifier,
-            positionProvider = TooltipDefaults.rememberTooltipPositionProvider(),
+            positionProvider = TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
             tooltip = {
                 PlainTooltip { Text(contentDescription) }
             },

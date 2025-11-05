@@ -14,6 +14,7 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Text
+import androidx.compose.material3.TooltipAnchorPosition
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.rememberTooltipState
@@ -96,7 +97,7 @@ fun ComponeIconButton(
     } else {
         Box(modifier = modifier) {  // It is necessary to use Modifier.align
             TooltipBox(
-                positionProvider = TooltipDefaults.rememberTooltipPositionProvider(),
+                positionProvider = TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
                 tooltip = {
                     PlainTooltip {
                         Text(contentDescription)
@@ -173,7 +174,7 @@ fun ComponeIconToggleButton(
     } else {
         TooltipBox(
             modifier = modifier,
-            positionProvider = TooltipDefaults.rememberTooltipPositionProvider(),
+            positionProvider = TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
             tooltip = {
                 PlainTooltip {
                     Text(contentDescription)
