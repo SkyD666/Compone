@@ -1,3 +1,6 @@
+@file:Suppress("UnstableApiUsage")
+
+import com.android.build.api.dsl.androidLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -9,7 +12,10 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
+    androidLibrary {
+        namespace = "com.skyd.compone"
+        compileSdk = 36
+        minSdk = 24
         compilerOptions {
             jvmTarget = JvmTarget.JVM_17
         }
@@ -17,16 +23,12 @@ kotlin {
 
     jvm()
 
-//    listOf(
-//        iosX64(),
-//        iosArm64(),
-//        iosSimulatorArm64()
-//    ).forEach {
-//        it.binaries.framework {
-//            baseName = "shared"
-//            isStatic = true
-//        }
-//    }
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
+    macosX64()
+    macosArm64()
 
     sourceSets {
         commonMain.dependencies {
@@ -54,20 +56,9 @@ kotlin {
                 optIn("androidx.compose.material3.ExperimentalMaterial3ExpressiveApi")
                 optIn("androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi")
                 optIn("kotlin.contracts.ExperimentalContracts")
+                optIn("kotlinx.cinterop.ExperimentalForeignApi")
             }
         }
-    }
-}
-
-android {
-    namespace = "com.skyd.compone"
-    compileSdk = 36
-    defaultConfig {
-        minSdk = 24
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
@@ -79,31 +70,31 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta07")
+    coordinates("io.github.skyd666", "compone", "1.0-beta08")
 
     pom {
-        name.set("Compone")
-        description.set("A Compose Multiplatform UI Kit.")
-        inceptionYear.set("2025")
-        url.set("https://github.com/SkyD666/Compone")
+        name = "Compone"
+        description = "A Compose Multiplatform UI Kit."
+        inceptionYear = "2025"
+        url = "https://github.com/SkyD666/Compone"
         licenses {
             license {
-                name.set("The Apache License, Version 2.0")
-                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
             }
         }
         developers {
             developer {
-                id.set("SkyD666")
-                name.set("SkyD666")
-                url.set("https://github.com/SkyD666")
+                id = "SkyD666"
+                name = "SkyD666"
+                url = "https://github.com/SkyD666"
             }
         }
         scm {
-            url.set("https://github.com/SkyD666/Compone")
-            connection.set("scm:git:git://github.com/SkyD666/Compone.git")
-            developerConnection.set("scm:git:ssh://git@github.com/SkyD666/Compone.git")
+            url = "https://github.com/SkyD666/Compone"
+            connection = "scm:git:git://github.com/SkyD666/Compone.git"
+            developerConnection = "scm:git:ssh://git@github.com/SkyD666/Compone.git"
         }
     }
 }
