@@ -16,6 +16,7 @@ kotlin {
         namespace = "com.skyd.compone"
         compileSdk = 36
         minSdk = 24
+        androidResources.enable = true
         compilerOptions {
             jvmTarget = JvmTarget.JVM_17
         }
@@ -70,7 +71,7 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta08")
+    coordinates("io.github.skyd666", "compone", "1.0-beta09")
 
     pom {
         name = "Compone"
