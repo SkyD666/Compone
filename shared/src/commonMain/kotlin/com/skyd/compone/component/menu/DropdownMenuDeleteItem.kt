@@ -12,6 +12,7 @@ import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
 import compone.shared.generated.resources.Res
 import compone.shared.generated.resources.delete
 import org.jetbrains.compose.resources.stringResource
@@ -40,6 +41,42 @@ fun DropdownMenuDeleteItem(
     DropdownMenuItem(
         text = text,
         onClick = onClick,
+        modifier = modifier,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
+        enabled = enabled,
+        colors = colors,
+        contentPadding = contentPadding,
+        interactionSource = interactionSource,
+    )
+}
+
+@Composable
+fun DropdownMenuDeleteItem(
+    text: @Composable () -> Unit = { Text(text = stringResource(Res.string.delete)) },
+    shape: Shape,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    leadingIcon: @Composable (() -> Unit)? = {
+        Icon(
+            imageVector = Icons.Outlined.Delete,
+            contentDescription = null,
+        )
+    },
+    trailingIcon: @Composable (() -> Unit)? = null,
+    enabled: Boolean = true,
+    colors: MenuItemColors = MenuDefaults.itemColors(
+        textColor = MaterialTheme.colorScheme.error,
+        leadingIconColor = MaterialTheme.colorScheme.error,
+        trailingIconColor = MaterialTheme.colorScheme.error,
+    ),
+    contentPadding: PaddingValues = MenuDefaults.DropdownMenuItemContentPadding,
+    interactionSource: MutableInteractionSource? = null,
+) {
+    DropdownMenuItem(
+        onClick = onClick,
+        text = text,
+        shape = shape,
         modifier = modifier,
         leadingIcon = leadingIcon,
         trailingIcon = trailingIcon,
