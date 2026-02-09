@@ -29,9 +29,7 @@ fun <T> ListMenu(
                 DropdownMenuItem(
                     text = { Text(text = displayName(v)) },
                     shape = MenuDefaults.itemShape(index, values.size).shape,
-                    leadingIcon = if (leadingIcon == null) null else {
-                        { leadingIcon.invoke(v) }
-                    },
+                    leadingIcon = leadingIcon?.let { icon -> { icon(v) } },
                     onClick = {
                         onClick(v)
                         onDismissRequest()

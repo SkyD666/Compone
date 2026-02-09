@@ -3,7 +3,10 @@ package com.skyd.compone.component
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -31,7 +34,9 @@ fun ComponeTopBar(
     title: @Composable () -> Unit,
     contentPadding: @Composable () -> PaddingValues = { PaddingValues() },
     navigationIcon: @Composable () -> Unit = { BackIcon() },
-    windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
+    windowInsets: WindowInsets = WindowInsets.safeDrawing.only(
+        WindowInsetsSides.Horizontal + WindowInsetsSides.Top
+    ),
     colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
     actions: @Composable RowScope.() -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior? = null,

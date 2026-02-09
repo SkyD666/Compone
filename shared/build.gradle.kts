@@ -1,6 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-import com.android.build.api.dsl.androidLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -18,18 +17,22 @@ kotlin {
         minSdk = 24
         androidResources.enable = true
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_17
+            jvmTarget = JvmTarget.JVM_21
         }
     }
 
     jvm()
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    macosX64()
-    macosArm64()
+    listOf(
+        iosArm64(),
+        iosSimulatorArm64(),
+        macosArm64()
+    ).forEach { target ->
+        target.binaries.framework {
+            baseName = "Compone"
+            isStatic = true
+        }
+    }
 
     sourceSets {
         commonMain.dependencies {
@@ -50,17 +53,17 @@ kotlin {
         jvmMain.dependencies {
             implementation(libs.compose.desktop)
         }
+    }
 
-        all {
-            with(languageSettings) {
-                optIn("androidx.compose.material3.ExperimentalMaterial3Api")
-                optIn("androidx.compose.material3.ExperimentalMaterial3ExpressiveApi")
-                optIn("androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi")
-                optIn("androidx.compose.ui.ExperimentalComposeUiApi")
-                optIn("kotlin.contracts.ExperimentalContracts")
-                optIn("kotlinx.cinterop.ExperimentalForeignApi")
-            }
-        }
+    compilerOptions {
+        optIn.addAll(
+            "androidx.compose.material3.ExperimentalMaterial3Api",
+            "androidx.compose.material3.ExperimentalMaterial3ExpressiveApi",
+            "androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi",
+            "androidx.compose.ui.ExperimentalComposeUiApi",
+            "kotlin.contracts.ExperimentalContracts",
+            "kotlinx.cinterop.ExperimentalForeignApi"
+        )
     }
 }
 
@@ -72,7 +75,7 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta12")
+    coordinates("io.github.skyd666", "compone", "1.0-beta13")
 
     pom {
         name = "Compone"
