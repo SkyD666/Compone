@@ -18,9 +18,13 @@ actual fun onEmptyPopBackStack(): () -> Unit {
 }
 
 actual fun Modifier.pointerOnBack(onBack: (() -> Unit)?): Modifier = composed {
-    val backInvoker = onBack ?: BackInvoker()
+    val backInvoker = if (onBack == DefaultBackInvoker) {
+        BackInvoker()
+    } else {
+        onBack
+    }
     onClick(
         matcher = PointerMatcher.mouse(PointerButton.Back),
-        onClick = backInvoker,
+        onClick = { backInvoker?.invoke() },
     )
 }

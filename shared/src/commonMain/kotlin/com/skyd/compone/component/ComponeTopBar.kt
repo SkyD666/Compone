@@ -96,6 +96,8 @@ fun BackInvoker(): () -> Unit {
     }
 }
 
+val DefaultBackInvoker = { }
+
 @Composable
 fun BackIcon() {
     val backInvoker = BackInvoker()
@@ -113,4 +115,4 @@ fun BackIcon(onClick: () -> Unit = {}) {
     )
 }
 
-expect fun Modifier.pointerOnBack(onBack: (() -> Unit)? = null): Modifier
+expect fun Modifier.pointerOnBack(onBack: (() -> Unit)? = DefaultBackInvoker): Modifier
