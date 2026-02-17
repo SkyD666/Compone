@@ -60,9 +60,10 @@ kotlin {
             "androidx.compose.material3.ExperimentalMaterial3Api",
             "androidx.compose.material3.ExperimentalMaterial3ExpressiveApi",
             "androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi",
+            "androidx.compose.foundation.ExperimentalFoundationApi",
             "androidx.compose.ui.ExperimentalComposeUiApi",
             "kotlin.contracts.ExperimentalContracts",
-            "kotlinx.cinterop.ExperimentalForeignApi"
+            "kotlinx.cinterop.ExperimentalForeignApi",
         )
     }
 }
@@ -75,7 +76,7 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta13")
+    coordinates("io.github.skyd666", "compone", "1.0-beta14")
 
     pom {
         name = "Compone"
