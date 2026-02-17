@@ -1,6 +1,7 @@
 package com.skyd.compone.component
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import platform.Foundation.NSSelectorFromString
 import platform.UIKit.UIApplication
 import platform.UIKit.UIControl
@@ -15,3 +16,5 @@ actual fun onEmptyPopBackStack(): () -> Unit {
         )
     }
 }
+
+actual fun Modifier.pointerOnBack(onBack: (() -> Unit)?): Modifier = this

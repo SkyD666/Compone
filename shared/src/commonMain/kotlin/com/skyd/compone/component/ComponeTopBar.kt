@@ -112,3 +112,5 @@ fun BackIcon(onClick: () -> Unit = {}) {
         onClick = onClick
     )
 }
+
+expect fun Modifier.pointerOnBack(onBack: (() -> Unit)? = null): Modifier

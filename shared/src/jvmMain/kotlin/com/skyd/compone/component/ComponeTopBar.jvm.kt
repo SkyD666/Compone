@@ -6,8 +6,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.input.pointer.PointerButton
 
-actual fun Modifier.platformOperation(): Modifier = composed {
-    val backInvoker = BackInvoker()
+actual fun Modifier.pointerOnBack(onBack: (() -> Unit)?): Modifier = composed {
+    val backInvoker = onBack ?: BackInvoker()
     onClick(
         matcher = PointerMatcher.mouse(PointerButton.Back),
         onClick = backInvoker,

@@ -25,7 +25,7 @@ fun ComponeScaffold(
     content: @Composable (PaddingValues) -> Unit,
 ) {
     Scaffold(
-        modifier = modifier.platformOperation(),
+        modifier = modifier.pointerOnBack(),
         topBar = topBar,
         bottomBar = bottomBar,
         snackbarHost = snackbarHost,
@@ -37,5 +37,3 @@ fun ComponeScaffold(
         content = content,
     )
 }
-
-expect fun Modifier.platformOperation(): Modifier
