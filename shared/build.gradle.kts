@@ -40,10 +40,9 @@ kotlin {
             implementation(libs.compose.foundation)
             implementation(libs.compose.ui)
             implementation(libs.compose.material3)
-            implementation(libs.compose.material3.adaptive.navigation)
             implementation(libs.compose.materialIconsExtended)
             implementation(libs.compose.components.resources)
-            implementation(libs.jetbrains.navigation.compose)
+            implementation(libs.androidx.navigation3.runtime)
         }
 
         commonTest.dependencies {
@@ -76,7 +75,7 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta16")
+    coordinates("io.github.skyd666", "compone", "1.0-beta17")
 
     pom {
         name = "Compone"

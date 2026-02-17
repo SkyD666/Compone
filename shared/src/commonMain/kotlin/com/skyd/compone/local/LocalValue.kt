@@ -1,12 +1,10 @@
 package com.skyd.compone.local
 
 import androidx.compose.runtime.compositionLocalOf
-import androidx.navigation.NavHostController
+import androidx.navigation3.runtime.NavBackStack
+import androidx.navigation3.runtime.NavKey
 
-val LocalNavController = compositionLocalOf<NavHostController> {
-    error("LocalNavController not initialized!")
-}
 
-val LocalGlobalNavController = compositionLocalOf<NavHostController> {
+val LocalNavBackStack = compositionLocalOf<NavBackStack<NavKey>> {
     error("LocalGlobalNavController not initialized!")
 }
