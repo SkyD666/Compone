@@ -42,6 +42,7 @@ kotlin {
             implementation(libs.compose.material3)
             implementation(libs.compose.materialIconsExtended)
             implementation(libs.compose.components.resources)
+            implementation(libs.compose.material3.adaptive.navigation3)
             implementation(libs.androidx.navigation3.runtime)
         }
 
@@ -75,7 +76,7 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta17")
+    coordinates("io.github.skyd666", "compone", "1.0-beta18")
 
     pom {
         name = "Compone"

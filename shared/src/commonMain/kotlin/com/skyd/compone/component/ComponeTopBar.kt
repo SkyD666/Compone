@@ -17,7 +17,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.skyd.compone.local.LocalNavBackStack
+import com.skyd.compone.component.navigation.LocalCurrentNavBackStack
 import compone.shared.generated.resources.Res
 import compone.shared.generated.resources.back
 import org.jetbrains.compose.resources.stringResource
@@ -84,7 +84,7 @@ expect fun onEmptyPopBackStack(): () -> Unit
 
 @Composable
 fun BackInvoker(): () -> Unit {
-    val navBackStack = LocalNavBackStack.current
+    val navBackStack = LocalCurrentNavBackStack.current
     val onEmptyPopBackStack = onEmptyPopBackStack()
     return {
         if (navBackStack.removeLastOrNull() == null) {
