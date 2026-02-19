@@ -5,18 +5,15 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 
-val LocalNavBackStack = compositionLocalOf<NavBackStack<NavKey>> {
-    error("LocalNavBackStack not initialized!")
-}
 
-val LocalCurrentNavBackStack = compositionLocalOf<CurrentNavBackStack> {
-    error("LocalCurrentNavBackStack not initialized!")
+val LocalNavBackStack = compositionLocalOf<CurrentNavBackStack> {
+    error("LocalNavBackStack not initialized!")
 }
 
 @Composable
 fun newCurrentNavBackStack(
     base: NavBackStack<NavKey>,
-    parent: CurrentNavBackStack? = LocalCurrentNavBackStack.current,
+    parent: CurrentNavBackStack? = LocalNavBackStack.current,
 ): CurrentNavBackStack {
     return CurrentNavBackStack(
         base = base,
