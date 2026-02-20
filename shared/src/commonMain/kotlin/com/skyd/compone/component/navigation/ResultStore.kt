@@ -17,7 +17,7 @@ val LocalResultStore = compositionLocalOf<ResultStore> {
  */
 @Composable
 fun rememberResultStore(): ResultStore {
-    return rememberSaveable(saver = ResultStoreSaver()) { ResultStore() }
+    return rememberSaveable(saver = resultStoreSaver()) { ResultStore() }
 }
 
 /**
@@ -54,7 +54,11 @@ class ResultStore {
 }
 
 /** Saver to save and restore the NavController across config change and process death. */
-private fun ResultStoreSaver(): Saver<ResultStore, *> = Saver(
-    save = { it.resultStateMap },
-    restore = { ResultStore().apply { resultStateMap.putAll(it) } },
+private fun resultStoreSaver(): Saver<ResultStore, *> = Saver(
+    save = { store -> store.resultStateMap.mapValues { it.value.value } },
+    restore = { saveable ->
+        ResultStore().apply {
+            resultStateMap.putAll(saveable.mapValues { mutableStateOf(it) })
+        }
+    },
 )
