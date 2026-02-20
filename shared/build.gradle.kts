@@ -76,7 +76,7 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta19")
+    coordinates("io.github.skyd666", "compone", "1.0-beta20")
 
     pom {
         name = "Compone"

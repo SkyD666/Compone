@@ -10,8 +10,12 @@ val LocalNavBackStack = compositionLocalOf<CurrentNavBackStack> {
     error("LocalNavBackStack not initialized!")
 }
 
+val LocalGlobalNavBackStack = compositionLocalOf<CurrentNavBackStack> {
+    error("LocalGlobalNavBackStack not initialized!")
+}
+
 @Composable
-fun newCurrentNavBackStack(
+fun newNavBackStack(
     base: NavBackStack<NavKey>,
     parent: CurrentNavBackStack? = LocalNavBackStack.current,
 ): CurrentNavBackStack {
