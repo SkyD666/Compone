@@ -11,10 +11,13 @@ plugins {
 }
 
 kotlin {
-    androidLibrary {
+    android {
         namespace = "com.skyd.compone"
-        compileSdk = 36
         minSdk = 24
+        compileSdk {
+            version = release(37) { minorApiLevel = 0 }
+        }
+        buildToolsVersion = "37.0.0"
         androidResources.enable = true
         compilerOptions {
             jvmTarget = JvmTarget.JVM_21
@@ -76,7 +79,7 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.skyd666", "compone", "1.0-beta23")
+    coordinates("io.github.skyd666", "compone", "1.0-beta24")
 
     pom {
         name = "Compone"
