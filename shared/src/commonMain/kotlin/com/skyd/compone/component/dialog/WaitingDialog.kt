@@ -14,6 +14,7 @@ import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -21,7 +22,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
 import compone.shared.generated.resources.Res
+import compone.shared.generated.resources.cancel
 import compone.shared.generated.resources.waiting
 import compone.shared.generated.resources.warning
 import org.jetbrains.compose.resources.stringResource
@@ -32,12 +35,16 @@ fun WaitingDialog(
     currentValue: Int? = null,
     totalValue: Int? = null,
     msg: String? = null,
-    title: String = stringResource(Res.string.warning)
+    title: String = stringResource(Res.string.warning),
+    onCancel: (() -> Unit)? = null,
+    cancelEnabled: Boolean = true,
 ) {
     if (currentValue == null || totalValue == null) {
         WaitingDialog(
             visible = visible,
             title = title,
+            onCancel = onCancel,
+            cancelEnabled = cancelEnabled,
             text = if (msg == null) null else {
                 {
                     Text(
@@ -52,6 +59,8 @@ fun WaitingDialog(
         WaitingDialog(
             visible = visible,
             title = title,
+            onCancel = onCancel,
+            cancelEnabled = cancelEnabled,
             icon = { Icon(imageVector = Icons.Outlined.HourglassEmpty, contentDescription = null) },
         ) {
             Column(
@@ -87,19 +96,39 @@ fun WaitingDialog(
     }
 }
 
+/**
+ * Providing [onCancel] shows a cancel button and handles back presses. The caller owns
+ * task cancellation and visibility. [cancelEnabled] can protect a final saving phase.
+ * Outside clicks never cancel the operation.
+ */
 @Composable
 fun WaitingDialog(
     visible: Boolean,
     title: String = stringResource(Res.string.waiting),
     icon: @Composable (() -> Unit)? = { LoadingIndicator() },
+    onCancel: (() -> Unit)? = null,
+    cancelEnabled: Boolean = true,
     text: @Composable (() -> Unit)? = null,
 ) {
     ComponeDialog(
         visible = visible,
-        onDismissRequest = { },
+        properties = DialogProperties(
+            // Consume back even when cancellation is disabled so it cannot navigate
+            // the underlying screen. The callback below decides whether to cancel.
+            dismissOnBackPress = true,
+            dismissOnClickOutside = false,
+        ),
+        onDismissRequest = { if (cancelEnabled) onCancel?.invoke() },
         icon = icon,
         title = { Text(text = title) },
         text = text,
-        confirmButton = {}
+        confirmButton = {},
+        dismissButton = onCancel?.let { cancel ->
+            {
+                TextButton(onClick = cancel, enabled = cancelEnabled) {
+                    Text(stringResource(Res.string.cancel))
+                }
+            }
+        },
     )
 }
